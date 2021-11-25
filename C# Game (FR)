@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JustePrix
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int ValeurAtrouver = new Random().Next(0, 1000);
+            int i = 0;
+            int j = 10;
+            int prix = ValeurAtrouver - 1;
+            bool test = true;
+            int rejouer = 0;
+
+            while(test == true)
+            {
+                while(prix != ValeurAtrouver && j != 0)
+                {
+                    Console.WriteLine("Encore {0} tentatives \t Donnez votre prix", j);
+                    prix = int.Parse(Console.ReadLine());
+                    i = i + 1;
+                    j = j - 1;
+                    
+                    if(prix < ValeurAtrouver)
+                    {
+                        Console.WriteLine("Plus grand que {0}", prix);
+
+                    }
+                    else if (prix > ValeurAtrouver)
+                    {
+                        Console.WriteLine("Plus petit que {0}", prix);
+                    }
+                }
+                if(j==0)
+                {
+                    Console.WriteLine("vous avez perdu");
+                }
+                else
+                {
+                    Console.WriteLine("Bravo !! Vous avez trouvé en {0} essais", i);
+                }
+
+                Console.WriteLine("Voulez vous rejouer ? 1= OUI / 2=NON");
+
+                rejouer = int.Parse(Console.ReadLine());
+
+                if (rejouer ==1)
+                {
+                    test = true;
+                    i = 0;
+                    j = 10;
+
+                }
+
+                else if(rejouer == 2)
+                {
+                    test = false;
+                }
+
+            }
+        }
+    }
+}
